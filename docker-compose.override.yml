@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  cowindb:
+    container_name: cowindb
+    environment:
+      - SA_PASSWORD=Password@1234
+      - ACCEPT_EULA=Y
+    restart: always
+    ports:
+      - "1433:1433"
+  cowin.api:
+    container_name: cowin.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "ConnectionStrings:VaccinationDbConnectionString=Server=cowindb;Database=Cowindb;User Id=sa;Password=Password@1234"
+    ports:
+      - "8000:80"     
+    depends_on:
+      - cowindb
