@@ -10,5 +10,6 @@ namespace CoWin.Application.Contracts.Persistance
     public interface IVaccinationDetailRepository : IAsyncRepository<VaccinationDetail>
     {
         Task<VaccinationDetail> GetVaccinationDetails(int userName);
+        Task<bool> IsBookingAvailable(int userId);
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoWin.Infrastructure.Migrations
 {
     [DbContext(typeof(VaccinationContext))]
-    [Migration("20220813061154_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220814083725_InitialCreateDb")]
+    partial class InitialCreateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,10 +28,10 @@ namespace CoWin.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("FirstDose")
+                    b.Property<DateTime?>("FirstDose")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("SecondDose")
+                    b.Property<DateTime?>("SecondDose")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

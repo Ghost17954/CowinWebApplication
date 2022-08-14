@@ -20,10 +20,20 @@ namespace CoWin.Infrastructure.Repository
         public async Task<VaccinationDetail> GetVaccinationDetails(int userId)
         {            
             var vaccinationDetail = await _context.VaccinationDetails.Where(o => o.VaccinationId == userId).FirstOrDefaultAsync();
-            vaccinationDetail.DateOfVaccination = await _context.VaccinationDates.Where(o => o.Id == userId).FirstOrDefaultAsync();
-            vaccinationDetail.VaccinationPlace = await _context.VaccinationPlaces.Where(o => o.Id == userId).FirstOrDefaultAsync();
+            if (vaccinationDetail != null)
+            {
+                vaccinationDetail.DateOfVaccination = await _context.VaccinationDates.Where(o => o.Id == userId).FirstOrDefaultAsync();
+                vaccinationDetail.VaccinationPlace = await _context.VaccinationPlaces.Where(o => o.Id == userId).FirstOrDefaultAsync();
+            }
             return vaccinationDetail;
         }
-        
+
+        public async Task<bool> IsBookingAvailable(int userId)
+        {
+            var vaccinationPlace = await _context.VaccinationPlaces.Where(o => o.Id == userId).FirstOrDefaultAsync();
+            if (string.IsNullOrEmpty(vaccinationPlace?.FirstDose) || (string.IsNullOrEmpty(vaccinationPlace?.SecondDose)))
+                return true;
+            return false;
+        }
     }
 }

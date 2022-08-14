@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CoWin.Application.Features.IsBookingAvailable.Queries;
 using CoWin.Application.Features.Orders.Queries;
 using CoWin.Application.Features.VaccinationDetail.Queries;
 using MediatR;
@@ -28,7 +29,21 @@ namespace CoWin.API.Controllers
                 return BadRequest();
             var query = new GetVaccinationDetailsQuery(userId);
             var vaccinationDetailsVm = await _mediator.Send(query);
-            return Ok(vaccinationDetailsVm);
+            return Ok(vaccinationDetailsVm==null?new VaccinationDetailsVm(): vaccinationDetailsVm);
         }
+
+        [HttpGet("CheckAvailability/{userId}", Name = "CheckBookAvailability")]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<string>> CheckBookAvailabilityByUserId(int userId)
+        {
+            if (userId == 0)
+                return BadRequest();
+            var query = new IsBookingAvailableQuery(userId);
+            var isBookingAvailable = await _mediator.Send(query);
+            if (isBookingAvailable)
+                return Ok($"Vaccination slot can be booked");
+            return Ok($"User has already taked 2 dosage.No Bookings can be made.");
+        }
+
     }
 }

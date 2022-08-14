@@ -53,7 +53,18 @@ namespace CoWin.Infrastructure.Persistance
                    VaccinationPlace=new VaccinationPlaces{FirstDose="Kerala",SecondDose="Kerala" },
                     DateOfVaccination=new VaccinationDates{FirstDose= new DateTime(2020,06,20),SecondDose=new DateTime(2021,01,22) },
                     Address="Chandigarh",
-                    Email="Sam@gmail.com",                   
+                    Email="Sam@gmail.com",
+                    PhoneNo="985623697"
+                },
+                new VaccinationDetail
+                {
+                    VaccinationId=4,
+                    VaccineName="covishield" ,
+                    Name="Mark",
+                   VaccinationPlace=new VaccinationPlaces{FirstDose="Kerala" },
+                    DateOfVaccination=new VaccinationDates{FirstDose= new DateTime(2020,06,20)},
+                    Address="Chandigarh",
+                    Email="Mark@gmail.com",
                     PhoneNo="985623697"
                 }
             };

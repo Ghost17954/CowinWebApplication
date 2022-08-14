@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CoWin.Infrastructure.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCreateDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,8 @@ namespace CoWin.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstDose = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    SecondDose = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    FirstDose = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    SecondDose = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

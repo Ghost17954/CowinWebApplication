@@ -26,10 +26,10 @@ namespace CoWin.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("FirstDose")
+                    b.Property<DateTime?>("FirstDose")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("SecondDose")
+                    b.Property<DateTime?>("SecondDose")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
