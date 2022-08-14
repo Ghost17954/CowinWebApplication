@@ -11,7 +11,7 @@ namespace CoWin.Domain.Entities
     {
         [Key]
         public int Id { get; set; }
-        public DateTime FirstDose { get; set; }
-        public DateTime SecondDose { get; set; }
+        public DateTime? FirstDose { get; set; }
+        public DateTime? SecondDose { get; set; }
     }
 }

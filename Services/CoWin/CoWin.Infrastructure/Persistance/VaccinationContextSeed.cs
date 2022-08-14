@@ -55,17 +55,6 @@ namespace CoWin.Infrastructure.Persistance
                     Address="Chandigarh",
                     Email="Sam@gmail.com",                   
                     PhoneNo="985623697"
-                },               
-                new VaccinationDetail
-                {
-                    VaccinationId=4,
-                    VaccineName="covaxin" ,
-                    Name="Tony",
-                    VaccinationPlace=new VaccinationPlaces{FirstDose="TamilNadu",SecondDose="Maharastra" },
-                    DateOfVaccination=new VaccinationDates{FirstDose= new DateTime(2020,09,20),SecondDose=new DateTime(2021,03,22) },
-                    Address="Munnar",
-                    Email="Tony@gmail.com",
-                    PhoneNo="856324684"
                 }
             };
         }

@@ -22,13 +22,13 @@ namespace CoWin.API.Controllers
 
         [HttpGet("{userId}", Name = "GetVaccinationDetails")]
         [ProducesResponseType(typeof(VaccinationDetailsVm), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<VaccinationDetailsVm>> GetOrderByUserName(int userId)
+        public async Task<ActionResult<VaccinationDetailsVm>> GetVaccinationDetailsByUserId(int userId)
         {
             if(userId==0)
                 return BadRequest();
             var query = new GetVaccinationDetailsQuery(userId);
-            var orderVm = await _mediator.Send(query);
-            return Ok(orderVm);
+            var vaccinationDetailsVm = await _mediator.Send(query);
+            return Ok(vaccinationDetailsVm);
         }
     }
 }

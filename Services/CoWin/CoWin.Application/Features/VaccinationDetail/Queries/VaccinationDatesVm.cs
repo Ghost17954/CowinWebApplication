@@ -8,7 +8,7 @@ namespace CoWin.Application.Features.VaccinationDetail.Queries
 {
     public class VaccinationDatesVm
     {
-        public DateTime FirstDose { get; set; }
-        public DateTime SecondDose { get; set; }
+        public DateTime? FirstDose { get; set; }
+        public DateTime? SecondDose { get; set; }
     }
 }
